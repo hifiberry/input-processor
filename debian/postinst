@@ -1,0 +1,18 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = "configure" ]; then
+    # This package was renamed from ladspa-riaa, and the pipewire node was
+    # renamed riaa -> input-processor, so the old config files are obsolete.
+    # debhelper registers files under /etc as dpkg conffiles, and a package
+    # *removal* (via Replaces/Conflicts, which is a remove not a purge) keeps
+    # conffiles behind. Without this cleanup the old configs linger and
+    # pipewire loads BOTH the old `riaa` node and the new `input-processor`
+    # node. Remove the obsolete configs explicitly.
+    rm -f /etc/pipewire/pipewire.conf.d/90-riaa.conf
+    rm -f /etc/xdg/wireplumber/wireplumber.conf.d/99-riaa-autoconnect.conf
+fi
+
+#DEBHELPER#
+
+exit 0
