@@ -1,4 +1,4 @@
-Source: ladspa-riaa
+Source: hifiberry-input-processor
 Section: sound
 Priority: optional
 Maintainer: HiFiBerry <support@hifiberry.com>
@@ -12,14 +12,17 @@ Homepage: https://github.com/hifiberry/riaa
 Vcs-Git: https://github.com/hifiberry/riaa.git
 Vcs-Browser: https://github.com/hifiberry/riaa
 
-Package: ladspa-riaa
+Package: hifiberry-input-processor
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
          pipewire,
          pipewire-pulse | pipewire-audio-client-libraries,
          wireplumber
-Description: RIAA phono preamp equalization LADSPA plugin
+Provides: ladspa-riaa
+Replaces: ladspa-riaa
+Conflicts: ladspa-riaa
+Description: Analog input processor (line-level) with optional RIAA phono equalization
  RIAA phono preamp equalization plugin for vinyl playback with optional
  subsonic filtering. Provides LADSPA plugin format.
  .

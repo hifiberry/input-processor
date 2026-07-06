@@ -1,3 +1,14 @@
+hifiberry-input-processor (1.3.0) stable; urgency=medium
+
+  * Rename package ladspa-riaa -> hifiberry-input-processor (Provides/Replaces/
+    Conflicts the old name for a clean upgrade).
+  * Rename the pipewire node riaa -> input-processor (input-processor.monitor /
+    .output); wireplumber autoconnect target updated.
+  * RIAA equalization is now OFF by default (line-level input is the common
+    case); it remains available as an optional, bypassable filter stage.
+
+ -- HiFiBerry <support@hifiberry.com>  Mon, 06 Jul 2026 16:26:09 +0200
+
 ladspa-riaa (1.2.0-1) stable; urgency=medium
 
   * Save all plugin settings to configuration file
