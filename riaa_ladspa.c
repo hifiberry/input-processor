@@ -140,7 +140,7 @@ static LADSPA_Handle instantiate_RIAA(
         // Set defaults from config (use port names as keys)
         plugin->default_gain = config_get_float(&config, RIAA_PORT_NAME_GAIN, 0.0f);
         plugin->default_subsonic_sel = config_get_float(&config, RIAA_PORT_NAME_SUBSONIC_FILTER, 0.0f);
-        plugin->default_riaa_enable = config_get_float(&config, RIAA_PORT_NAME_ENABLE, 1.0f);
+        plugin->default_riaa_enable = config_get_float(&config, RIAA_PORT_NAME_ENABLE, 0.0f);
         plugin->default_declick_enable = config_get_float(&config, RIAA_PORT_NAME_DECLICK_ENABLE, 0.0f);
         plugin->default_spike_threshold = config_get_float(&config, RIAA_PORT_NAME_SPIKE_THRESHOLD, 20.0f);
         plugin->default_spike_width = config_get_float(&config, RIAA_PORT_NAME_SPIKE_WIDTH, 1.0f);
@@ -616,10 +616,10 @@ const LADSPA_Descriptor *ladspa_descriptor(unsigned long index) {
             port_range_hints[RIAA_SUBSONIC_SEL].LowerBound = 0.0f;
             port_range_hints[RIAA_SUBSONIC_SEL].UpperBound = 2.0f;
             
-            // RIAA enable: 0 = off, 1 = on, default = 1 (enabled)
-            port_range_hints[RIAA_ENABLE].HintDescriptor = 
+            // RIAA enable: 0 = off, 1 = on, default = 0 (disabled)
+            port_range_hints[RIAA_ENABLE].HintDescriptor =
                 LADSPA_HINT_TOGGLED |
-                LADSPA_HINT_DEFAULT_1;
+                LADSPA_HINT_DEFAULT_0;
             port_range_hints[RIAA_ENABLE].LowerBound = 0.0f;
             port_range_hints[RIAA_ENABLE].UpperBound = 0.0f;
             
