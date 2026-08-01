@@ -14,5 +14,7 @@ debian/debhelper-build-stamp
 debian/files
 debian/*.debhelper.log
 debian/*.substvars
+debian/hifiberry-input-processor/
+# staging dirs from before the ladspa-riaa -> hifiberry-input-processor rename
 debian/ladspa-riaa/
 debian/riaa/
