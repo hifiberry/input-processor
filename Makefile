@@ -91,7 +91,6 @@ uninstall:
 	@echo "Uninstalled RIAA plugins"
 
 deb:
-	BUILD_DIR="/tmp/input-processor-build"; \
 	if [ -n "$$DIST" ]; then \
 		echo "Using distribution from DIST environment variable: $$DIST"; \
 		DIST_ARG="--dist=$$DIST"; \
@@ -107,5 +106,4 @@ deb:
 		--enable-network \
 		$$DIST_ARG \
 		$$CHROOT_ARG \
-		--build-dir="$$BUILD_DIR" \
 		--verbose
